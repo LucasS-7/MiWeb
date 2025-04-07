@@ -78,6 +78,8 @@ public class VentaEntradasTeatro {
         
        }else{ 
         System.out.println("Por favor, ingrese una opcion valida");
+        System.out.println("Ejemplo de Commit");
+        System.out.println("Ejemplo para GitHub");
       }
     }  
     scanner.close();    
