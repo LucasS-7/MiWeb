@@ -1,5 +1,4 @@
 package cl.douc.teatrofinal;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,6 +8,7 @@ public class MenuTeatro {
     int contadorVentas = 0;
     ArrayList<Integer>asientosOcupados = new ArrayList<>();
     
+    //METODO PARA CALCULAR PRECIO (SEGUN TIPO ENTRADA)
     public double calcularPrecio (String tipoEntrada) {
        switch (tipoEntrada.toUpperCase()) {
          case "VIP": return 20000.0;
@@ -21,6 +21,7 @@ public class MenuTeatro {
       }
     }
     
+    //METODO PARA APLICAR DESCUENTO (SEGUN TIPO DE CLIENTE)
     public String aplicarDescuento (String tipoCliente){
     if (tipoCliente.equalsIgnoreCase("NINO"))return "10%";
     if (tipoCliente.equalsIgnoreCase("MUJER"))return "20%";
@@ -29,6 +30,8 @@ public class MenuTeatro {
     return "0%";
     }
     
+    
+    //METODO PARA CALCULAR DESCUENTO (SEGUN TIPO CLIENTE)
     public double calcularDescuento (String tipoCliente){
     
     if (tipoCliente.equalsIgnoreCase("NINO")) return 0.10;
@@ -38,6 +41,8 @@ public class MenuTeatro {
     else return 0.0;
     }
     
+    
+    //METODO PARA REALIZAR VENTA DE ENTRADA
     public String venderEntrada (int idCliente, String tipoCliente,int numeroAsiento, String tipoEntrada){
     if (asientosOcupados.contains(numeroAsiento)){
     return "ASIENTO OCUPADO!";
@@ -46,6 +51,7 @@ public class MenuTeatro {
     double precioBase = calcularPrecio(tipoEntrada);
     double descuento = calcularDescuento(tipoCliente);
     double precioFinal = precioBase * (1- descuento);
+    
     
     Cliente cliente = new Cliente (idCliente,tipoCliente);
     Entrada entrada = new Entrada (numeroAsiento, tipoEntrada);
@@ -58,6 +64,8 @@ public class MenuTeatro {
     return "VENTA REALIZADA! ID VENTA: " + venta.idVenta + ", DESCUENTO APLICADO %"+(int)(descuento*100)+", PRECIO FINAL: $"+precioFinal;
     } 
     
+    
+    //METODO PARA ELIMINAR ENTRADA (MEDIANTE ID DE VENTA)
     public boolean eliminarEntrada (int idVenta){
     for (int i=0; i < contadorVentas; i++){
         if (ventas[i] != null && ventas[i].idVenta== idVenta){
@@ -69,6 +77,7 @@ public class MenuTeatro {
      return false;
     }
     
+    //METODO PARA BUSCAR VENTA (MEDIANTE ID DE VENTA)
     public Venta buscarVenta(int idVenta){
        for (int i=0; i<contadorVentas; i++){
           if (ventas[i] != null && ventas[i].idVenta == idVenta){
@@ -79,6 +88,7 @@ public class MenuTeatro {
      }
     
     
+    //METODO PARA MOSTRAR RESUMEN DE VENTAS (CON SUS RESPECTIVOS DATOS)
     public void mostrarResumen(){
     System.out.println("*** RESUMEN DE VENTAS ***");
     for (int i = 0; i < contadorVentas; i++){
@@ -94,7 +104,8 @@ public class MenuTeatro {
        } 
      }
     }
-      
+   
+    //MENÚ PRINCIPAL
     public void MenuPrincipal(){
      Scanner scanner = new Scanner(System.in);   
     System.out.println("**** MENU ****");

@@ -11,11 +11,11 @@ public class TeatroFinal {
         
         System.out.println("BIENVENIDO A TEATRO MORO!");
         while (opcion >=1 && opcion<=5) {
-        menu.MenuPrincipal();
+        menu.MenuPrincipal(); //MENU PRINCIPAL
         opcion = scanner.nextInt();
         
          switch (opcion){
-             case 1:
+             case 1: //OPCION 1: VENTA ENTRADA
                  System.out.println("POR FAVOR INGRESA LOS SIGUIENTES DATOS: ");
                  System.out.print("ID CLIENTE: ");
                  int idCliente = scanner.nextInt(); scanner.nextLine();
@@ -29,7 +29,8 @@ public class TeatroFinal {
                  System.out.println(resultado);
                  System.out.println("************************************************************");
                  break;
-            case 2:
+                 
+            case 2: //OPCION 2: ELIMINAR VENTA
                  System.out.println("POR FAVOR INGRESE (ID DE VENTA A ELIMINAR): ");
                  int idEliminar = scanner.nextInt();
                  if (menu.eliminarEntrada(idEliminar)){
@@ -39,7 +40,9 @@ public class TeatroFinal {
                      System.out.println("********************************************************");        
                  }
                  break;
-            case 3:
+                 
+            case 3: //OPCION 3: BUSCAR ENTRADA 
+                
                  System.out.println("POR FAVOR INGRESE (ID DE VENTA A BUSCAR):");
                  int idBuscar = scanner.nextInt();
                  Venta venta = menu.buscarVenta(idBuscar);
@@ -56,10 +59,14 @@ public class TeatroFinal {
                  
                  }
                  break;
-            case 4:
+                 
+            case 4: //OPCION 4: MOSTRAR RESUMEN DE VENTAS
+                
                 menu.mostrarResumen();
                 break;
-            case 5:
+                
+            case 5: //OPCION 5: SALIR 
+                
                  System.out.println("SALIENDO DEL PROGRAMA... NOS VEMOS PRONTO!");
                  opcion++;
                  break;
